@@ -1,33 +1,44 @@
 package com.edu.utadeo.services;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.edu.utadeo.DAO.IPersonaDAO;
 import com.edu.utadeo.modelEntity.Persona;
 
 public class PersonaService implements IPersonaService {
-
+	@Autowired
+	private IPersonaDAO personaDao;
+	
 	@Override
 	public List<Persona> findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return personaDao.findAll();
 	}
 
 	@Override
 	public Persona save(Persona p) {
 		// TODO Auto-generated method stub
-		return null;
+		return personaDao.save(p);
 	}
 
 	@Override
 	public void delete(Long id) {
 		// TODO Auto-generated method stub
-		
+		personaDao.deleteById(id);
 	}
 
 	@Override
 	public Persona findById(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		Optional<Persona> persona= personaDao.findById(id);
+		if (persona.isPresent()) {
+			return persona.get();
+		} else {
+			return null;
+		}
 	}
 
 }
