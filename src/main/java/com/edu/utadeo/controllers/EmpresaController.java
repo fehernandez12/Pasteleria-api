@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -46,6 +47,13 @@ public class EmpresaController {
 		empresaService.delete(id);
 	}
 	
-	@PutMapping("/")
-	
+	@PutMapping("/{id}")
+	@ResponseStatus(HttpStatus.ACCEPTED)
+	public Empresa update(@PathVariable long id, @RequestBody Empresa e) {
+		Empresa actual = empresaService.findById(id);
+		actual.setNombre(e.getNombre());
+		actual.setNit(e.getNit());
+		actual.setDireccion(e.getDireccion());
+		return empresaService.save(actual);
+	}
 }
