@@ -5,10 +5,12 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.edu.utadeo.DAO.IEmpleadoDAO;
 import com.edu.utadeo.modelEntity.Empleado;
 
+@Service
 public class EmpleadoService implements IEmpleadoService {
 	@Autowired
 	private IEmpleadoDAO empleadoDao;
