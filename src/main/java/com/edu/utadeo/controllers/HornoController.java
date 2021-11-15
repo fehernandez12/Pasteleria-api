@@ -37,8 +37,8 @@ public class HornoController {
 	
 	@PostMapping("/")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Horno save(@RequestBody Horno h) {
-		return hornoService.save(h);
+	public Horno save(@RequestBody Horno l) {
+		return hornoService.save(l);
 	}
 	
 	@DeleteMapping("/{id}")
