@@ -1,5 +1,7 @@
 package com.edu.utadeo.modelEntity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Ingredientes")
-public class Ingrediente {
+public class Ingrediente implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long nombre; 

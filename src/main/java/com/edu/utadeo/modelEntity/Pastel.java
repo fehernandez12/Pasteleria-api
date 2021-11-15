@@ -1,5 +1,6 @@
 package com.edu.utadeo.modelEntity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,12 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="pasteles")
-public class Pastel {
+public class Pastel implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id; 
@@ -30,18 +30,61 @@ public class Pastel {
 	private short pesoMin;
 	
 	@Column
-	private Date fechaSolicitud;
-	
-	@Column
-	private Date fechaEntrega;
-	
-	@Column
 	private String adicional;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="tipo_empleado.id")
 	private Empleado empleado;
+	
 	//Getters and Setters
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public short getPesoMin() {
+		return pesoMin;
+	}
+
+	public void setPesoMin(short pesoMin) {
+		this.pesoMin = pesoMin;
+	}
+	
+	public String getAdicional() {
+		return adicional;
+	}
+
+	public void setAdicional(String adicional) {
+		this.adicional = adicional;
+	}
+
+	public Empleado getEmpleado() {
+		return empleado;
+	}
+
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
+	}
 	
 	
 }

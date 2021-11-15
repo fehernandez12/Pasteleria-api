@@ -1,5 +1,6 @@
 package com.edu.utadeo.modelEntity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -12,9 +13,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name="etapa_pastel")
-public class EtapaPastel {
+public class EtapaPastel implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
@@ -23,9 +26,11 @@ public class EtapaPastel {
 	private float tempCoccion;
 
 	@Column
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date fechaInicio;
 
 	@Column
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date fechaFin;
 	
 	@ManyToOne(fetch=FetchType.LAZY)

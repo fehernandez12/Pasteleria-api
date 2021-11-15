@@ -18,7 +18,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="empleados")
-@JsonIgnoreProperties({"",""})
 public class Empleado implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

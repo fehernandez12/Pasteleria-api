@@ -1,5 +1,7 @@
 package com.edu.utadeo.modelEntity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="empresas")
-public class Empresa {
+public class Empresa implements Serializable {
 	@Id
 	private long nit;
 	@Column
