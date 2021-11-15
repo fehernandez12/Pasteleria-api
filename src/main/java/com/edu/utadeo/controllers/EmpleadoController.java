@@ -1,10 +1,12 @@
 package com.edu.utadeo.controllers;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,6 +25,8 @@ public class EmpleadoController {
 		return empleadoService.findAll();
 	}
 	
-	//@GetMapping("/{id}")
-	//public Emplea
+	@GetMapping("/{id}")
+	public Empleado detail(@PathVariable UUID id) {
+		return empleadoService.findById(id);
+	}
 }
