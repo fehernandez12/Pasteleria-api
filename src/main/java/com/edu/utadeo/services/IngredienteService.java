@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.edu.utadeo.DAO.IIngredienteDAO;
 import com.edu.utadeo.modelEntity.Horno;
 import com.edu.utadeo.modelEntity.Ingrediente;
 
+@Service
 public class IngredienteService implements IIngredienteService {
 	@Autowired
 	private IIngredienteDAO ingredienteDao;

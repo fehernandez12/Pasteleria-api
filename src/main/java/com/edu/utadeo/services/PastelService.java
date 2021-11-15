@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.edu.utadeo.DAO.IPastelDAO;
 import com.edu.utadeo.modelEntity.Ingrediente;
 import com.edu.utadeo.modelEntity.Pastel;
 
+@Service
 public class PastelService implements IPastelService {
 	@Autowired
 	private IPastelDAO pastelDao;

@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.edu.utadeo.DAO.ITipoEmpleadoDAO;
 import com.edu.utadeo.modelEntity.PersonaExterna;
 import com.edu.utadeo.modelEntity.TipoEmpleado;
 
+@Service
 public class TipoEmpleadoService implements ITipoEmpleadoService {
 	@Autowired
 	private ITipoEmpleadoDAO tipoEmpleadoDao;

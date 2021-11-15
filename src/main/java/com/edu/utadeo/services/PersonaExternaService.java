@@ -5,10 +5,12 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.edu.utadeo.DAO.IPersonaExternaDAO;
 import com.edu.utadeo.modelEntity.PersonaExterna;
 
+@Service
 public class PersonaExternaService implements IPersonaExternaService {
 	@Autowired
 	private IPersonaExternaDAO personaExternaDao;

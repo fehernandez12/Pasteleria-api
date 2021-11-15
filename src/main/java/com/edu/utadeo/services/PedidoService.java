@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.edu.utadeo.DAO.IPedidoDAO;
 import com.edu.utadeo.modelEntity.Pastel;
 import com.edu.utadeo.modelEntity.Pedido;
 
+@Service
 public class PedidoService implements IPedidoService {
 	@Autowired
 	private IPedidoDAO pedidoDao;

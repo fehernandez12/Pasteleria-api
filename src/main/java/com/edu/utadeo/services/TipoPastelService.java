@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.edu.utadeo.DAO.ITipoPastelDAO;
 import com.edu.utadeo.modelEntity.TipoEmpleado;
 import com.edu.utadeo.modelEntity.TipoPastel;
 
+@Service
 public class TipoPastelService implements ITipoPastelService {
 	@Autowired
 	private ITipoPastelDAO tipoPastelDao;
