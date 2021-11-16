@@ -1,10 +1,18 @@
 package com.edu.utadeo.controllers;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,8 +46,29 @@ public class PersonaExternaController {
 	
 	@PostMapping("/")
 	@ResponseStatus(HttpStatus.CREATED)
-	public PersonaExterna save(@RequestBody PersonaExterna e) {
-		return personaExternaService.save(e);
+	public ResponseEntity<?> save(@Valid @RequestBody PersonaExterna d, 
+			BindingResult result) {
+		Map<String, Object> response = new HashMap<>();
+		PersonaExterna ext = new PersonaExterna();
+		if (result.hasErrors()) {
+			List<String> errors = new ArrayList<>();
+			for (FieldError err: result.getFieldErrors()) {
+				errors.add(err.getField());
+			}
+			response.put("errors", errors);
+			return new ResponseEntity<Map<String, Object>>(
+					response, HttpStatus.BAD_REQUEST);
+		}
+		try {
+			ext = d;
+			d = personaExternaService.save(ext);
+		}
+		catch (Exception ex) {
+			response.put("Mensaje", ex.getMessage());
+			return new ResponseEntity<Map<String, Object>>(
+					response, HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<PersonaExterna>(ext, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/")

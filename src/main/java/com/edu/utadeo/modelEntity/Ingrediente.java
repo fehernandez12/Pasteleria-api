@@ -14,18 +14,27 @@ import javax.persistence.Table;
 public class Ingrediente implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long nombre; 
+	private Long id;
+	
+	private String nombre;
 	
 	@Column
 	private String uMed;
 	
 	//Getters and setters
+	public Long getId() {
+		return id;
+	}
 
-	public long getNombre() {
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public String getNombre() {
 		return nombre;
 	}
 
-	public void setNombre(long nombre) {
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
