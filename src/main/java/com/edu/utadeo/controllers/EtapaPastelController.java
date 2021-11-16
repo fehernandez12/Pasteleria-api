@@ -1,6 +1,7 @@
 package com.edu.utadeo.controllers;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -59,6 +60,8 @@ public class EtapaPastelController {
 		}
 		try {
 			et = d;
+			Date fechaActual = new Date();
+			et.setFechaInicio(fechaActual);
 			d = etapaPastelService.save(et);
 		}
 		catch (Exception ex) {
