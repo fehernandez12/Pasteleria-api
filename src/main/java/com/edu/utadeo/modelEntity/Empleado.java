@@ -13,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -24,12 +23,10 @@ public class Empleado implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private UUID id;
 	
-	@Column(name="Nombres",nullable=true)
-	@NotEmpty(message = "Nombres no pueden estar vacios")
+	@Column
 	private String nombres;
 	
-	@Column(name="Apellidos",nullable=true)
-	@NotEmpty(message = "Apellidos no pueden estar vacios")
+	@Column
 	private String apellidos;
 	
 	@Column
