@@ -12,29 +12,37 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="etapa_pastel")
 public class EtapaPastel implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
-
+	
+	@NotNull
 	@Column
 	private float tempCoccion;
-
+	
+	@NotNull
 	@Column
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date fechaInicio;
 
+	@NotNull
 	@Column
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date fechaFin;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="hornos.id")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Horno hornoAsignado;
 	
 	

@@ -13,9 +13,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
+@SuppressWarnings("serial")
 @Entity
 @Table(name="empleados")
 public class Empleado implements Serializable{
@@ -23,21 +26,26 @@ public class Empleado implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private UUID id;
 	
+	@NotNull
 	@Column
 	private String nombres;
 	
+	@NotNull
 	@Column
 	private String apellidos;
 	
+	@NotNull
 	@Column
 	private float salarioActual;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="tipo_empleado.id")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private TipoEmpleado tipoEmpleado;
 	
 	@OneToOne
 	@JoinColumn(name="persona")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Persona persona;
 	
 	

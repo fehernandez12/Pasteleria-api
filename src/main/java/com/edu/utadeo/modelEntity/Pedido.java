@@ -12,26 +12,33 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="pedidos")
 public class Pedido implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id; 
 	
+	@NotNull
 	@Column
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date fechaSolicitud;
 	
+	@NotNull
 	@Column
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date fechaEntrega;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="tipo_empleado.id")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Empleado empleado;
 	
 	//getters and setters

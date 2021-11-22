@@ -1,6 +1,7 @@
 package com.edu.utadeo.controllers;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,6 +51,7 @@ public class PersonaExternaController {
 			BindingResult result) {
 		Map<String, Object> response = new HashMap<>();
 		PersonaExterna ext = new PersonaExterna();
+		Date fechaNac = d.getFechaNac();
 		if (result.hasErrors()) {
 			List<String> errors = new ArrayList<>();
 			for (FieldError err: result.getFieldErrors()) {

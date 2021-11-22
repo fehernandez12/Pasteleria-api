@@ -7,14 +7,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="tipo_pastel")
 public class TipoPastel implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
+	@NotNull
 	@Column
 	private String descripcion;
 	
