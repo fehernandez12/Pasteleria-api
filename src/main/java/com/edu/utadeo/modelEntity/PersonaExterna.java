@@ -25,24 +25,19 @@ public class PersonaExterna implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private UUID id;
 	
-	@NotNull
-	@Column
+	@Column(nullable=false)
 	private int cedula;
 	
-	@NotNull
-	@Column
+	@Column(nullable=false)
 	private String nombres;
 	
-	@NotNull
-	@Column
+	@Column(nullable=false)
 	private String apellidos;
 	
-	@NotNull
-	@Column
+	@Column(nullable=false)
 	private String dir;
 	
-	@NotNull
-	@Column
+	@Column(nullable=false)
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date fechaNac;
 	

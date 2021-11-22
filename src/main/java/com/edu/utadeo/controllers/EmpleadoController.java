@@ -24,7 +24,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.edu.utadeo.modelEntity.Empleado;
+import com.edu.utadeo.modelEntity.Persona;
 import com.edu.utadeo.services.IEmpleadoService;
+import com.edu.utadeo.services.IPersonaService;
 
 @RestController
 @RequestMapping("/api/empleados")
@@ -32,6 +34,9 @@ import com.edu.utadeo.services.IEmpleadoService;
 public class EmpleadoController {
 	@Autowired
 	private IEmpleadoService empleadoService;
+	
+	@Autowired
+	private IPersonaService personaService;
 	
 	@GetMapping("/")
 	public List<Empleado> FindAll(){
@@ -48,6 +53,8 @@ public class EmpleadoController {
 	public ResponseEntity<?> save(@Valid @RequestBody Empleado d, 
 			BindingResult result) {
 		Map<String, Object> response = new HashMap<>();
+		Persona persona = new Persona();
+		Persona p = personaService.save(persona);
 		Empleado emp = new Empleado();
 		if (result.hasErrors()) {
 			List<String> errors = new ArrayList<>();
@@ -60,6 +67,7 @@ public class EmpleadoController {
 		}
 		try {
 			emp = d;
+			emp.setPersona(p);
 			d = empleadoService.save(emp);
 		}
 		catch (Exception ex) {
@@ -70,7 +78,7 @@ public class EmpleadoController {
 		return new ResponseEntity<Empleado>(emp, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/")
+	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable UUID id) {
 		empleadoService.delete(id);
