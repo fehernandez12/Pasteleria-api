@@ -69,7 +69,7 @@ public class TipoPastelController {
 		return new ResponseEntity<TipoPastel>(tp, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/")
+	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		tipoPastelService.delete(id);

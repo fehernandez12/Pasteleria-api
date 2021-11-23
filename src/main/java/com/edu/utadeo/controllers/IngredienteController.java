@@ -69,7 +69,7 @@ public class IngredienteController {
 		return new ResponseEntity<Ingrediente>(in, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/")
+	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable long id) {
 		ingredienteService.delete(id);

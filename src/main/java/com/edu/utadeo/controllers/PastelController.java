@@ -69,7 +69,7 @@ public class PastelController {
 		return new ResponseEntity<Pastel>(p, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/")
+	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable long id) {
 		pastelService.delete(id);

@@ -73,7 +73,7 @@ public class PersonaExternaController {
 		return new ResponseEntity<PersonaExterna>(ext, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/")
+	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable UUID id) {
 		personaExternaService.delete(id);

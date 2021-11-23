@@ -69,7 +69,7 @@ public class TipoEmpleadoController {
 		return new ResponseEntity<TipoEmpleado>(te, HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/")
+	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		tipoEmpleadoService.delete(id);
