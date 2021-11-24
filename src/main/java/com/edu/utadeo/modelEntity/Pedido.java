@@ -41,7 +41,19 @@ public class Pedido implements Serializable{
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Empleado empleado;
 	
-	//getters and setters
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="persona.id")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	private Persona cliente;
+	
+	public Persona getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Persona cliente) {
+		this.cliente = cliente;
+	}
+	
 	public long getId() {
 		return id;
 	}
