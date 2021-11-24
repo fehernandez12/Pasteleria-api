@@ -2,6 +2,7 @@ package com.edu.utadeo.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,13 +28,13 @@ public class EmpresaService implements IEmpresaService {
 	}
 
 	@Override
-	public void delete(long id) {
+	public void delete(UUID id) {
 		// TODO Auto-generated method stub
 		empresaDao.deleteById(id);
 	}
 
 	@Override
-	public Empresa findById(long id) {
+	public Empresa findById(UUID id) {
 		// TODO Auto-generated method stub
 		Optional<Empresa> empresa= empresaDao.findById(id);
 		if (empresa.isPresent()) {

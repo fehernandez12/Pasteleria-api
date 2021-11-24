@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.validation.Valid;
 
@@ -38,7 +39,7 @@ public class EmpresaController {
 	}
 	
 	@GetMapping("/{id}")
-	public Empresa detail(@PathVariable long id) {
+	public Empresa detail(@PathVariable UUID id) {
 		return empresaService.findById(id);
 	}
 	
@@ -71,13 +72,13 @@ public class EmpresaController {
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void  delete(@PathVariable long id) {
+	public void  delete(@PathVariable UUID id) {
 		empresaService.delete(id);
 	}
 	
 	@PutMapping("/{id}")
 	@ResponseStatus(HttpStatus.ACCEPTED)
-	public Empresa update(@PathVariable long id, @RequestBody Empresa e) {
+	public Empresa update(@PathVariable UUID id, @RequestBody Empresa e) {
 		Empresa actual = empresaService.findById(id);
 		actual.setNombre(e.getNombre());
 		actual.setNit(e.getNit());
